@@ -1,0 +1,41 @@
+# Dependencies (Folder paket eksternal - sangat besar dan diinstall via npm install)
+node_modules/
+.pnp
+.pnp.js
+
+# Production / Build Output (Hasil build vite / tsc - tidak perlu karena dibuat otomatis saat build)
+dist/
+dist-ssr/
+*.local
+
+# TypeScript Cache (Cache kompilasi inkremental TypeScript)
+*.tsbuildinfo
+
+# Environment & Secrets (File variabel lingkungan yang mungkin berisi API key / konfigurasi rahasia)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs (File log error / debug instalasi package)
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor / IDE settings (Konfigurasi editor lokal masing-masing pengguna)
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating System files (File sampah bawaan OS Windows / macOS)
+.DS_Store
+Thumbs.db
+Desktop.ini
