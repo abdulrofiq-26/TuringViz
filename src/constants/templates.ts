@@ -138,6 +138,28 @@ export const TEMPLATES: MachineTemplate[] = [
       { id: 'inv2', currentState: 'q0', readSymbol: '1', writeSymbol: '0', moveDirection: 'R', nextState: 'q0', comment: 'Invert 1 to 0' },
       { id: 'inv3', currentState: 'q0', readSymbol: BLANK_SYMBOL, writeSymbol: BLANK_SYMBOL, moveDirection: 'S', nextState: 'q_accept', comment: 'All bits inverted, accept' }
     ]
+  },
+  {
+    id: 'name_recognizer_rofiq',
+    name: 'Name Recognizer ("rofiq")',
+    formalLanguage: 'L = { "rofiq" }',
+    description: 'Mengenali dan memvalidasi kata "rofiq" karakter per karakter, mengubah setiap huruf menjadi kapital (R-O-F-I-Q), dan berhenti di state ACCEPT.',
+    initialInput: 'rofiq',
+    initialState: 'q0',
+    acceptStates: ['q_accept', 'q_final'],
+    rules: [
+      { id: 'rofiq_1', currentState: 'q0', readSymbol: 'r', writeSymbol: 'R', moveDirection: 'R', nextState: 'q_o', comment: 'Baca "r", ubah ke "R", cari "o"' },
+      { id: 'rofiq_1b', currentState: 'q0', readSymbol: 'R', writeSymbol: 'R', moveDirection: 'R', nextState: 'q_o', comment: 'Baca "R", cari "o"' },
+      { id: 'rofiq_2', currentState: 'q_o', readSymbol: 'o', writeSymbol: 'O', moveDirection: 'R', nextState: 'q_f', comment: 'Baca "o", ubah ke "O", cari "f"' },
+      { id: 'rofiq_2b', currentState: 'q_o', readSymbol: 'O', writeSymbol: 'O', moveDirection: 'R', nextState: 'q_f', comment: 'Baca "O", cari "f"' },
+      { id: 'rofiq_3', currentState: 'q_f', readSymbol: 'f', writeSymbol: 'F', moveDirection: 'R', nextState: 'q_i', comment: 'Baca "f", ubah ke "F", cari "i"' },
+      { id: 'rofiq_3b', currentState: 'q_f', readSymbol: 'F', writeSymbol: 'F', moveDirection: 'R', nextState: 'q_i', comment: 'Baca "F", cari "i"' },
+      { id: 'rofiq_4', currentState: 'q_i', readSymbol: 'i', writeSymbol: 'I', moveDirection: 'R', nextState: 'q_q', comment: 'Baca "i", ubah ke "I", cari "q"' },
+      { id: 'rofiq_4b', currentState: 'q_i', readSymbol: 'I', writeSymbol: 'I', moveDirection: 'R', nextState: 'q_q', comment: 'Baca "I", cari "q"' },
+      { id: 'rofiq_5', currentState: 'q_q', readSymbol: 'q', writeSymbol: 'Q', moveDirection: 'R', nextState: 'q_end', comment: 'Baca "q", ubah ke "Q", cek akhir kata' },
+      { id: 'rofiq_5b', currentState: 'q_q', readSymbol: 'Q', writeSymbol: 'Q', moveDirection: 'R', nextState: 'q_end', comment: 'Baca "Q", cek akhir kata' },
+      { id: 'rofiq_6', currentState: 'q_end', readSymbol: BLANK_SYMBOL, writeSymbol: BLANK_SYMBOL, moveDirection: 'S', nextState: 'q_accept', comment: 'Akhir kata tercapai, nama "rofiq" diterima!' }
+    ]
   }
 ];
 
